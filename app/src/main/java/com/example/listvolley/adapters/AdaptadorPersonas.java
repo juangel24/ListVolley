@@ -10,7 +10,6 @@ import android.widget.TextView;
 import com.example.listvolley.R;
 import com.example.listvolley.models.Persona;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class AdaptadorPersonas extends BaseAdapter {
