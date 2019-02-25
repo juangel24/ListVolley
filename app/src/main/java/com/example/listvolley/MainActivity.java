@@ -16,6 +16,7 @@ import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONArray;
 
+import java.lang.reflect.Type;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -34,9 +35,9 @@ public class MainActivity extends AppCompatActivity {
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
-                        TypeToken<List<Persona>> PersonaList = new TypeToken<List<Persona>>() {};
+                        Type PersonaList = new TypeToken<List<Persona>>(){}.getType();
 
-                        List<Persona> personas = new Gson().fromJson(response.toString(), PersonaList.getType());
+                        List<Persona> personas = new Gson().fromJson(response.toString(), PersonaList);
 
                         listView.setAdapter(
                                 new AdaptadorPersonas(getApplicationContext(), personas)
