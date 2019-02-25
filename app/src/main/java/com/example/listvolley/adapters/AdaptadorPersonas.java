@@ -39,10 +39,13 @@ public class AdaptadorPersonas extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        if(convertView == null){
+        /*if(convertView == null){
             LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = layoutInflater.inflate(R.layout.row, null);
-        }
+            convertView = layoutInflater.inflate(R.layout.row, null)
+        }*/
+
+        LayoutInflater layoutInflater = LayoutInflater.from(context);
+        convertView = layoutInflater.inflate(R.layout.row, null);
 
         Persona persona = listPersonas.get(position);
 
