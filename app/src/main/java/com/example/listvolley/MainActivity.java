@@ -3,8 +3,6 @@ package com.example.listvolley;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Adapter;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.android.volley.Request;
@@ -18,7 +16,6 @@ import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONArray;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -37,14 +34,13 @@ public class MainActivity extends AppCompatActivity {
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
-                        Gson gson = new Gson();
-
                         TypeToken<List<Persona>> PersonaList = new TypeToken<List<Persona>>() {};
-                        List<Persona> personas = gson.fromJson(response.toString(), PersonaList.getType());
 
-                        AdaptadorPersonas adapter = new AdaptadorPersonas(getApplicationContext(), personas);
+                        List<Persona> personas = new Gson().fromJson(response.toString(), PersonaList.getType());
 
-                        listView.setAdapter(adapter);
+                        listView.setAdapter(
+                                new AdaptadorPersonas(getApplicationContext(), personas)
+                        );
                     }
                 },
                 new Response.ErrorListener() {
